@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Track Time on HubSpot Tickets (3 Ways) · Northpine Apps</title>
+<meta name="description" content="HubSpot has no built-in time tracking for tickets. Here are three ways to track time on HubSpot tickets, step by step, with the pros and cons of each.">
+<link rel="canonical" href="https://sayedun10.github.io/guides/track-time-on-hubspot-tickets.html">
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#f4f6f3,#121614);--ink:light-dark(#16201b,#e6ece8);--soft:light-dark(#4d5a53,#a3b0a9);--pine:light-dark(#1f5c45,#6fc29f);--line:color-mix(in srgb,var(--soft) 35%,transparent);--card:light-dark(#ffffff,#1a201d)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:0 auto;padding:56px 16px}
+.mark{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.1;letter-spacing:-.02em;margin:40px 0 12px}
+h2{font-size:22px;margin:40px 0 8px}
+h3{font-size:18px;margin:24px 0 4px}
+p,li{color:var(--soft)}
+strong{color:var(--ink)}
+a{color:var(--pine)}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:12px 0}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--ink)}
+td{color:var(--soft)}
+.panel{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pine);border-radius:12px;padding:16px;margin:24px 0}
+.panel p{margin:6px 0}
+.wrap{overflow-x:auto}
+footer{margin-top:64px;font-size:14px;color:var(--soft)}
+</style>
+</head>
+<body>
+<main>
+<div class="mark"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 6 17h5l-6 9h22l-6-9h5z" fill="currentColor" style="color:var(--pine)"/><rect x="14" y="26" width="4" height="4" fill="currentColor" style="color:var(--pine)"/></svg><a href="/" style="color:inherit;text-decoration:none">Northpine Apps</a></div>
+
+<h1>How to track time on HubSpot tickets</h1>
+<p>HubSpot doesn't track how long your team spends on a ticket. It records when a ticket was created and closed, but that's elapsed time, not working time. A ticket can sit open for three days and take twenty minutes of actual work. The request for real ticket time tracking has been open on the HubSpot Ideas forum for years (<a href="https://community.hubspot.com/t5/HubSpot-Ideas/TIME-TRACKING-OF-TICKETS/idi-p/309269">see the thread</a>).</p>
+<p>Here are the three ways teams handle it today.</p>
+
+<div class="wrap"><table>
+<thead><tr><th>Method</th><th>Cost</th><th>Accuracy</th><th>Effort for the team</th></tr></thead>
+<tbody>
+<tr><td>1. A "time spent" ticket property</td><td>Free</td><td>Low to medium (people guess)</td><td>Type hours on every ticket</td></tr>
+<tr><td>2. A separate time tracker</td><td>About $4 to $25 per user a month</td><td>Medium (timers get forgotten)</td><td>Start and stop timers, match to HubSpot later</td></tr>
+<tr><td>3. Automatic tracking in HubSpot</td><td>Free tier available</td><td>High</td><td>Confirm each session in one click</td></tr>
+</tbody>
+</table></div>
+
+<h2>1. Add a "time spent" property to tickets</h2>
+<p>This is free and works on every HubSpot plan.</p>
+<ol>
+<li>Click the <strong>settings</strong> icon in the top bar.</li>
+<li>In the left menu, go to <strong>Data Management &gt; Properties</strong>.</li>
+<li>In the object dropdown, choose <strong>Ticket properties</strong>, then click <strong>Create property</strong>.</li>
+<li>Name it "Time spent (hours)", set the field type to <strong>Number</strong>, and save.</li>
+<li>Add the property to your ticket record sidebar so people can see it, and make it required when a ticket is closed if your pipeline settings allow it.</li>
+<li>To report on it, export tickets with this property and drop the file into our <a href="/tools/hubspot-ticket-time-report.html">free ticket time report</a>. It gives you hours by company, by month and by owner.</li>
+</ol>
+<p><strong>The catch:</strong> the numbers are only as good as people's memory. Most reps fill it in at the end of the day, or when the ticket closes, and round.</p>
+
+<h2>2. Use a separate time tracker</h2>
+<p>Tools like Harvest, Clockify and Toggl are good at timers and timesheets. Some offer a HubSpot integration or a browser extension that adds a timer button to HubSpot pages.</p>
+<p><strong>The catch:</strong> the time lives in another tool. Someone has to match entries to HubSpot companies and tickets, usually at month end, and timers that weren't started are simply lost.</p>
+
+<h2>3. Track time automatically inside HubSpot</h2>
+<p><a href="/tally-time/setup.html">Tally Time</a>, built by us, adds a card to the HubSpot ticket record. It tracks time while a rep has the ticket open and working, then asks them to confirm or adjust the session in one click. The total is written to a ticket property, so HubSpot reports can use it.</p>
+<p>For agencies, it also tracks monthly <strong>retainer hours on the company record</strong> ("38 of 50 hours used"), warns at 80%, and creates a monthly client hours report. It's <a href="/tally-time/pricing.html">free during the beta</a>, with a free plan for up to 3 agents after that.</p>
+
+<div class="panel">
+<p><strong>Already have a time property?</strong> Turn last month's tickets into a report in under a minute with the <a href="/tools/hubspot-ticket-time-report.html">free HubSpot ticket time report</a>.</p>
+<p><strong>Billing clients for hours?</strong> Read <a href="/guides/track-retainer-hours.html">how to track retainer hours</a>.</p>
+</div>
+
+<h2>Common questions</h2>
+<h3>Doesn't HubSpot's "time to close" already measure this?</h3>
+<p>No. Time to close measures how long the ticket stayed open, including nights, weekends and time spent waiting on the customer. It's useful for service levels, but it doesn't tell you how much work a ticket took.</p>
+<h3>Which HubSpot plan do I need?</h3>
+<p>Custom ticket properties (method 1) work on all plans that include tickets. Tally Time works in any HubSpot account that uses tickets. See the <a href="/tally-time/setup.html">setup guide</a> for details.</p>
+
+<footer>© 2026 Northpine Apps · New Jersey, USA · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
+</main>
+</body>
+</html>

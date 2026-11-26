@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free HubSpot Ticket Time Report (Hours by Company) · Northpine Apps</title>
+<meta name="description" content="Turn a HubSpot ticket export into a time report: hours by company, by month and by owner. Free, no sign-up, and your file never leaves your browser.">
+<link rel="canonical" href="https://sayedun10.github.io/tools/hubspot-ticket-time-report.html">
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#f4f6f3,#121614);--ink:light-dark(#16201b,#e6ece8);--soft:light-dark(#4d5a53,#a3b0a9);--pine:light-dark(#1f5c45,#6fc29f);--line:color-mix(in srgb,var(--soft) 35%,transparent);--card:light-dark(#ffffff,#1a201d);--warn:light-dark(#9a5b00,#f0b45a)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:860px;margin:0 auto;padding:56px 16px}
+.mark{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.1;letter-spacing:-.02em;margin:40px 0 12px}
+h2{font-size:20px;margin:32px 0 8px}
+p,li{color:var(--soft)}
+strong{color:var(--ink)}
+a{color:var(--pine)}
+footer{margin-top:64px;font-size:14px;color:var(--soft)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}
+label{display:block;font-size:14px;color:var(--soft);margin-bottom:4px}
+select,input[type=number]{font:inherit;font-size:16px;width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+button,.filebtn{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:1px solid var(--pine);background:var(--pine);color:var(--bg);cursor:pointer;display:inline-block}
+button.ghost{background:transparent;color:var(--pine)}
+.drop{border:2px dashed var(--line);border-radius:12px;padding:24px;text-align:center}
+.drop.on{border-color:var(--pine)}
+.drop input{position:absolute;left:-9999px}
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:6px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+td.n,th.n{text-align:right}
+th{color:var(--ink)}
+td{color:var(--soft)}
+td:first-child{color:var(--ink);white-space:normal}
+.barcell{width:30%;min-width:80px}
+.bar{height:10px;border-radius:5px;background:var(--pine)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.note{font-size:14px;color:var(--warn)}
+.err{color:var(--warn);font-weight:600}
+.cta{border-left:4px solid var(--pine)}
+.cta p{margin:6px 0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.tabs button[aria-pressed=false]{background:transparent;color:var(--pine)}
+.hide{display:none}
+@media print{.noprint,footer,.mark{display:none!important}body{background:#fff;color:#000}.panel{border:none;padding:0}main{padding:0}td,th{color:#000}}
+</style>
+</head>
+<body>
+<main>
+<div class="mark noprint"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 6 17h5l-6 9h22l-6-9h5z" fill="currentColor" style="color:var(--pine)"/><rect x="14" y="26" width="4" height="4" fill="currentColor" style="color:var(--pine)"/></svg><a href="/" style="color:inherit;text-decoration:none">Northpine Apps</a></div>
+
+<div class="noprint">
+<h1>Free HubSpot ticket time report</h1>
+<p>Export your tickets from HubSpot, drop the file here, and get time by company, by month and by ticket owner, ready to print or download. Your file is read in your browser and never uploaded anywhere.</p>
+</div>
+
+<section class="panel noprint">
+<div class="drop" id="drop">
+<p style="margin:0 0 10px"><strong>Drop your HubSpot ticket export (.csv) here</strong></p>
+<label class="filebtn" for="file" style="color:var(--bg);margin:0">Choose a CSV file</label>
+<input type="file" id="file" accept=".csv,text/csv">
+<p style="margin:10px 0 0;font-size:14px">No export handy? <button class="ghost" id="sample" type="button" style="padding:4px 10px">Try sample data</button></p>
+</div>
+<p id="msg" class="err" role="status"></p>
+</section>
+
+<section class="panel noprint hide" id="mapPanel">
+<h2 style="margin-top:0">Check the columns</h2>
+<p style="margin-top:0">We guessed which columns to use. Change any that look wrong.</p>
+<div class="grid">
+<div><label for="mCompany">Company column</label><select id="mCompany"></select></div>
+<div><label for="mHours">Time column</label><select id="mHours"></select></div>
+<div><label for="mUnit">Time is in</label><select id="mUnit"><option value="h">Hours</option><option value="m">Minutes</option></select></div>
+<div><label for="mDate">Date column</label><select id="mDate"></select></div>
+<div><label for="mOwner">Owner column (optional)</label><select id="mOwner"></select></div>
+<div><label for="mRetainer">Monthly retainer hours (optional)</label><input id="mRetainer" type="number" min="0" step="0.5" placeholder="e.g. 20"></div>
+</div>
+<p class="note" id="noHours"></p>
+</section>
+
+<section id="report" class="hide">
+<h1 id="printTitle" style="display:none">Ticket time report</h1>
+<div class="actions noprint">
+<button class="ghost" id="printBtn" type="button">Print report</button>
+<button class="ghost" id="csvBtn" type="button">Download CSV</button>
+</div>
+<p id="summary"></p>
+<div class="tabs noprint" role="group" aria-label="Group by">
+<button type="button" data-g="company" aria-pressed="true">By company</button>
+<button type="button" data-g="month" aria-pressed="false">By company and month</button>
+<button type="button" data-g="owner" aria-pressed="false">By owner</button>
+</div>
+<div class="panel wrap" id="tableWrap"></div>
+</section>
+
+<section class="panel cta noprint">
+<h2 style="margin-top:0">Tired of exporting every month?</h2>
+<p><strong>Tally Time</strong> tracks time automatically while your team works on HubSpot tickets, so nobody has to type hours into a property. It shows retainer hours used on each company record, warns at 80%, and builds this report for you.</p>
+<p><a href="/tally-time/setup.html">See how Tally Time works</a> · <a href="/tally-time/pricing.html">Free during beta</a></p>
+</section>
+
+<section class="noprint">
+<h2>How to export your tickets from HubSpot</h2>
+<ol>
+<li>In HubSpot, go to <strong>CRM &gt; Tickets</strong> and switch to the <strong>table view</strong> (the list icon at the top).</li>
+<li>Click <strong>Edit columns</strong> and make sure the table shows your time property (for example "Time spent"), <strong>Create date</strong>, <strong>Ticket owner</strong> and the associated <strong>Company</strong>.</li>
+<li>Use the filters to limit the tickets, for example by create date for last month.</li>
+<li>Click <strong>Export</strong> (in the table's toolbar, or under <strong>Actions</strong> in some accounts). Choose <strong>CSV</strong> as the file format and confirm. HubSpot emails you a download link.</li>
+<li>Open the email, download the file, unzip it if it's zipped, and drop the .csv on this page.</li>
+</ol>
+<p>Menu names change from time to time. If a step looks different in your account, see HubSpot's own help on <a href="https://knowledge.hubspot.com/import-and-export/export-records">exporting records</a>.</p>
+<p><strong>No time property yet?</strong> Read <a href="/guides/track-time-on-hubspot-tickets.html">how to track time on HubSpot tickets</a>. Without one, this tool can only show ticket counts.</p>
+</section>
+
+<footer>© 2026 Northpine Apps · New Jersey, USA · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
+</main>
+<script>
+(function(){
+var rows=[],head=[],group='company';
+var $=function(i){return document.getElementById(i);};
+function parseCSV(t){
+  t=t.replace(/^﻿/,'');var out=[],row=[],f='',q=false;
+  for(var i=0;i<t.length;i++){var c=t[i];
+    if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++;}else q=false;}else f+=c;}
+    else if(c==='"')q=true;
+    else if(c===','){row.push(f);f='';}
+    else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;row.push(f);f='';if(row.length>1||row[0]!=='')out.push(row);row=[];}
+    else f+=c;}
+  if(f!==''||row.length){row.push(f);out.push(row);}
+  return out;}
+function guess(re){for(var i=0;i<head.length;i++)if(re.test(head[i]))return i;return -1;}
+function fill(sel,idx,opt){var s=$(sel);s.innerHTML='';
+  if(opt){var o=document.createElement('option');o.value='-1';o.textContent='(none)';s.appendChild(o);}
+  head.forEach(function(h,i){var o=document.createElement('option');o.value=i;o.textContent=h||('Column '+(i+1));s.appendChild(o);});
+  s.value=String(idx);}
+function load(text){
+  $('msg').textContent='';
+  var data=parseCSV(text);
+  if(data.length<2){$('msg').textContent='That file looks empty. Make sure it is a CSV export with a header row.';return;}
+  head=data[0].map(function(h){return h.trim();});rows=data.slice(1);
+  var hc=guess(/time spent|hours|time logged|duration|minutes/i);
+  fill('mCompany',Math.max(0,guess(/compan/i)),false);
+  fill('mHours',hc,true);
+  fill('mDate',Math.max(0,guess(/create date|created|date/i)),false);
+  fill('mOwner',guess(/owner|assignee|assigned/i),true);
+  $('mUnit').value=hc>=0&&/minute/i.test(head[hc])?'m':'h';
+  $('mapPanel').classList.remove('hide');$('report').classList.remove('hide');
+  render();}
+function num(v){v=String(v||'').replace(/[^0-9.,\-]/g,'');if(v.indexOf(',')>-1&&v.indexOf('.')===-1)v=v.replace(',','.');else v=v.replace(/,/g,'');var n=parseFloat(v);return isNaN(n)?0:n;}
+function month(v){v=String(v||'').trim();if(!v)return 'No date';
+  var m=v.match(/^(\d{4})-(\d{2})/);if(m)return m[1]+'-'+m[2];
+  var d=new Date(v);if(!isNaN(d))return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');return 'No date';}
+function fmt(h){return (Math.round(h*100)/100).toLocaleString('en-US',{maximumFractionDigits:2});}
+function agg(){
+  var ci=+$('mCompany').value,hi=+$('mHours').value,di=+$('mDate').value,oi=+$('mOwner').value,unit=$('mUnit').value;
+  var map={};var total=0,count=0;
+  rows.forEach(function(r){
+    var comp=(r[ci]||'').trim()||'No company';var h=hi>=0?num(r[hi]):0;if(unit==='m')h=h/60;
+    var key=group==='company'?comp:group==='owner'?((oi>=0&&(r[oi]||'').trim())||'No owner'):comp+'\u0001'+month(r[di]);
+    if(!map[key])map[key]={h:0,n:0};map[key].h+=h;map[key].n++;total+=h;count++;});
+  var list=Object.keys(map).map(function(k){return {k:k,h:map[k].h,n:map[k].n};});
+  if(group==='month')list.sort(function(a,b){var A=a.k.split('\u0001'),B=b.k.split('\u0001');return A[0]===B[0]?(A[1]<B[1]?1:-1):(A[0]<B[0]?-1:1);});
+  else list.sort(function(a,b){return hi>=0?b.h-a.h:b.n-a.n;});
+  return {list:list,total:total,count:count,hasHours:hi>=0};}
+var last=null;
+function render(){
+  var a=agg();last=a;
+  var ret=+$('mRetainer').value||0;
+  $('noHours').textContent=a.hasHours?'':'No time column selected, so the report shows ticket counts only.';
+  $('summary').innerHTML='';
+  var s=document.createElement('strong');s.textContent=a.count+' tickets'+(a.hasHours?' · '+fmt(a.total)+' hours in total':'');$('summary').appendChild(s);
+  var max=a.list.reduce(function(m,x){return Math.max(m,a.hasHours?x.h:x.n);},0)||1;
+  var t=document.createElement('table');
+  var cols=group==='month'?['Company','Month']:[group==='owner'?'Owner':'Company'];
+  var hr='<tr>'+cols.map(function(c){return '<th>'+c+'</th>';}).join('')+'<th class="n">Tickets</th>'+(a.hasHours?'<th class="n">Hours</th><th class="n">Avg per ticket</th>':'')+(ret&&group==='month'&&a.hasHours?'<th class="n">Of retainer</th>':'')+'<th class="barcell noprint"></th></tr>';
+  t.innerHTML='<thead>'+hr+'</thead>';
+  var tb=document.createElement('tbody');
+  a.list.forEach(function(x){
+    var tr=document.createElement('tr');
+    x.k.split('\u0001').forEach(function(p){var td=document.createElement('td');td.textContent=p;tr.appendChild(td);});
+    function cell(txt){var td=document.createElement('td');td.className='n';td.textContent=txt;tr.appendChild(td);}
+    cell(x.n);
+    if(a.hasHours){cell(fmt(x.h));cell(fmt(x.h/x.n));}
+    if(ret&&group==='month'&&a.hasHours)cell(Math.round(x.h/ret*100)+'%');
+    var bc=document.createElement('td');bc.className='barcell noprint';var b=document.createElement('div');b.className='bar';b.style.width=((a.hasHours?x.h:x.n)/max*100)+'%';bc.appendChild(b);tr.appendChild(bc);
+    tb.appendChild(tr);});
+  t.appendChild(tb);$('tableWrap').innerHTML='';$('tableWrap').appendChild(t);}
+['mCompany','mHours','mUnit','mDate','mOwner','mRetainer'].forEach(function(i){$(i).addEventListener('change',render);$(i).addEventListener('input',render);});
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){group=b.getAttribute('data-g');document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});render();};});
+function readFile(f){if(!f)return;if(!/\.csv$/i.test(f.name)&&f.type!=='text/csv'){$('msg').textContent='Please choose a .csv file. In HubSpot, pick CSV as the export format.';return;}
+  var r=new FileReader();r.onload=function(){load(String(r.result));};r.readAsText(f);}
+$('file').onchange=function(){readFile(this.files[0]);};
+var dz=$('drop');
+['dragenter','dragover'].forEach(function(e){dz.addEventListener(e,function(ev){ev.preventDefault();dz.classList.add('on');});});
+['dragleave','drop'].forEach(function(e){dz.addEventListener(e,function(ev){ev.preventDefault();dz.classList.remove('on');});});
+dz.addEventListener('drop',function(ev){readFile(ev.dataTransfer.files[0]);});
+$('sample').onclick=function(){
+  var cs=['Acme Co','Birch Dental','Cedar Legal'],ow=['Jordan Lee','Sam Patel','Riley Chen'],lines=['Ticket ID,Ticket name,Create date,Ticket owner,Associated Company,Time spent (hours)'];
+  var seed=7;function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
+  for(var i=0;i<36;i++){var m=8+Math.floor(rnd()*3),d=1+Math.floor(rnd()*27);
+    lines.push((1000+i)+',Request '+(i+1)+',2026-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0')+' 10:00,'+ow[Math.floor(rnd()*3)]+','+cs[Math.floor(rnd()*3)]+','+(Math.round((0.25+rnd()*3)*4)/4));}
+  load(lines.join('\n'));};
+$('printBtn').onclick=function(){$('printTitle').style.display='block';window.print();$('printTitle').style.display='none';};
+$('csvBtn').onclick=function(){if(!last)return;
+  var cols=group==='month'?['Company','Month']:[group==='owner'?'Owner':'Company'];
+  var out=[cols.concat(['Tickets'],last.hasHours?['Hours','Avg hours per ticket']:[])];
+  last.list.forEach(function(x){out.push(x.k.split('\u0001').concat([x.n],last.hasHours?[fmt(x.h),fmt(x.h/x.n)]:[]));});
+  var csv=out.map(function(r){return r.map(function(v){v=String(v);if(/^[=+\-@]/.test(v))v="'"+v;return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}).join(',');}).join('\n');
+  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='ticket-time-report.csv';document.body.appendChild(a);a.click();a.remove();};
+})();
+</script>
+</body>
+</html>
