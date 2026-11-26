@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tally Time setup guide · Northpine Apps</title>
+<meta name="description" content="How to set up and use Tally Time for HubSpot.">
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#f4f6f3,#121614);--ink:light-dark(#16201b,#e6ece8);--soft:light-dark(#4d5a53,#a3b0a9);--pine:light-dark(#1f5c45,#6fc29f)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:0 auto;padding:72px 20px}
+.mark{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px}
+h1{font-size:clamp(32px,6vw,48px);line-height:1.08;letter-spacing:-.02em;margin:48px 0 16px}
+p{color:var(--soft);max-width:60ch}
+a{color:var(--pine)}
+footer{margin-top:64px;font-size:14px;color:var(--soft)}
+</style>
+<style>h1{font-size:clamp(28px,5vw,40px)}h2{font-size:20px;margin:36px 0 8px}li{color:var(--soft);margin:4px 0}</style>
+</head>
+<body>
+<main>
+<div class="mark"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 6 17h5l-6 9h22l-6-9h5z" fill="currentColor" style="color:var(--pine)"/><rect x="14" y="26" width="4" height="4" fill="currentColor" style="color:var(--pine)"/></svg><a href="/" style="color:inherit;text-decoration:none">Northpine Apps</a></div>
+<h1>Tally Time setup guide</h1>
+<p>Tally Time tracks support time on HubSpot tickets automatically and shows retainer hours on companies. Setup takes about five minutes.</p>
+<h2>1. Install the app</h2>
+<p>Install Tally Time from the HubSpot App Marketplace, or from the install link we sent you. Approve the permissions. The app needs to read tickets and companies, write one ticket property, and create that property.</p>
+<p>When the install finishes, Tally Time adds a number property to tickets called <strong>Tally Time hours</strong>.</p>
+<h2>2. Add the ticket card</h2>
+<ol>
+<li>In HubSpot, click the <strong>settings</strong> icon in the top bar.</li>
+<li>In the left menu, under <strong>Data Management</strong>, click <strong>Objects</strong>, then choose <strong>Tickets</strong>.</li>
+<li>Open the <strong>Record Customization</strong> tab and click <strong>Default view</strong>.</li>
+<li>In the right sidebar, click the <strong>+</strong> icon, open the <strong>Card library</strong>, find <strong>Tally Time</strong>, and click <strong>Add card</strong>.</li>
+<li>Click <strong>Save</strong>, then <strong>Save and exit</strong>.</li>
+</ol>
+<h2>3. Add the retainer card (optional)</h2>
+<p>If you sell support retainers, repeat step 2 for <strong>Companies</strong> and add the <strong>Tally Time retainer</strong> card.</p>
+<h2>How tracking works</h2>
+<ul>
+<li>Opening a ticket starts the timer. It counts while the ticket stays open, even if the browser tab is in the background.</li>
+<li>Reloading the page within five minutes continues the same session.</li>
+<li>Closing the ticket, or about two and a half minutes without contact, ends the session. Click <strong>Stop and review</strong> to end it yourself.</li>
+<li>Finished sessions show under <strong>To review</strong>. Adjust the minutes if needed, then click <strong>Confirm</strong> or <strong>Discard</strong>.</li>
+<li>Confirmed time is added to the ticket's <strong>Tally Time hours</strong> property, so you can use it in HubSpot reports, views and workflows.</li>
+</ul>
+<h2>Retainers</h2>
+<ul>
+<li>On a company, enter the monthly retainer hours and click <strong>Save</strong>.</li>
+<li>The card shows hours used this month from confirmed time on tickets associated with that company. It warns at 80% and again at 100%.</li>
+<li>Click <strong>Copy client report</strong> to copy a summary by ticket that you can paste into an email or invoice.</li>
+<li>Months follow UTC.</li>
+</ul>
+<h2>Uninstalling</h2>
+<p>Uninstall the app from HubSpot's <strong>Connected apps</strong> page. The <strong>Tally Time hours</strong> property stays on your tickets until you delete it. To have the data we store deleted, see our <a href="/privacy.html">privacy policy</a>.</p>
+<h2>Support</h2>
+<p>Email <a href="mailto:vicedexinfo@gmail.com">vicedexinfo@gmail.com</a>.</p>
+<footer>© 2026 Northpine Apps · New Jersey, USA · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
+</main>
+</body>
+</html>
