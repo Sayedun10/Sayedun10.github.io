@@ -3,114 +3,154 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Northpine Apps · Time tracking and free tools for HubSpot service teams</title>
-<meta name="description" content="Northpine builds small, focused apps for HubSpot. Tally Time tracks time on tickets and retainer hours on companies. Plus free tools and templates for support teams and agencies.">
+<title>Northpine Apps · Every hour, accounted for</title>
+<meta name="description" content="Northpine builds focused apps and free tools for HubSpot service teams and agencies. Tally Time tracks real working time on tickets and client retainer hours on companies.">
 <meta name="google-site-verification" content="bH1hyP1amPPGv-kDRqmbnmxxwz2T5g3tdkWiZvV4xyI" />
 <meta name='impact-site-verification' value='fe02151e-dac1-41cc-a4f1-5d0cbc1e3c6f'>
+<meta name="theme-color" content="#eeefe8">
 <link rel="canonical" href="https://sayedun10.github.io/">
-<meta property="og:title" content="Northpine Apps: time tracking for HubSpot tickets">
-<meta property="og:description" content="Track time on HubSpot tickets and client retainer hours, automatically. Free during the beta.">
+<meta property="og:title" content="Northpine Apps: every hour, accounted for">
+<meta property="og:description" content="Track real working time on HubSpot tickets and client retainer hours. Free during the beta.">
 <meta property="og:type" content="website">
-<style>
-main{max-width:1120px;margin:0 auto;padding:0 20px}
-section{scroll-margin-top:80px}
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:40px 0 24px}
-.hero h1{font-size:clamp(38px,5.6vw,64px)!important;margin:18px 0 18px!important}
-.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--pine),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero .lede{font-size:clamp(17px,1.7vw,20px);line-height:1.6;max-width:54ch;margin:0 0 28px}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.hero-note{margin:16px 0 0;font-size:14px;color:var(--faint);display:flex;flex-wrap:wrap;gap:6px 18px}
-.hero-note span::before{content:"✓";color:var(--pine);font-weight:700;margin-right:6px}
-/* Product mock */
-.mock{position:relative;isolation:isolate}
-.mock::before{content:"";position:absolute;inset:-40px 0;z-index:-1;background:radial-gradient(closest-side,light-dark(rgba(47,191,131,.22),rgba(95,211,160,.16)),transparent);filter:blur(10px)}
-.window{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}
-.window-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--bg-2)}
-.window-bar i{width:10px;height:10px;border-radius:50%;background:var(--line-2)}
-.window-bar b{margin-left:10px;font:500 12.5px/1 var(--font);color:var(--faint)}
-.window-body{display:grid;grid-template-columns:1fr 210px}
-.ticket{padding:20px 22px;border-right:1px solid var(--line)}
-.ticket small{font:500 12px/1 var(--mono);color:var(--faint)}
-.ticket h3{margin:8px 0 10px!important;font-size:17px!important}
-.line{height:9px;border-radius:5px;background:var(--bg-2);margin:9px 0}
-.pill{display:inline-block;font:600 11.5px/1 var(--font);padding:5px 9px;border-radius:999px;background:var(--pine-soft);color:var(--pine);margin-right:6px}
-.side{padding:18px 16px;display:flex;flex-direction:column;gap:14px;background:light-dark(#fbfcfb,#0f1613)}
-.mini{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--card)}
-.mini h4{margin:0 0 8px;font:600 11.5px/1 var(--font);text-transform:uppercase;letter-spacing:.06em;color:var(--faint)}
-.timer{font:600 26px/1 var(--mono);color:var(--ink);letter-spacing:-.02em}
-.live{display:inline-flex;align-items:center;gap:6px;font:600 11.5px/1 var(--font);color:var(--pine);margin-top:8px}
-.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 var(--mint);animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 light-dark(rgba(47,191,131,.6),rgba(126,232,184,.5))}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
-.mbar{height:8px;border-radius:999px;background:var(--bg-2);overflow:hidden;margin:8px 0 6px}
-.mbar span{display:block;height:100%;width:76%;border-radius:999px;background:linear-gradient(90deg,var(--pine),var(--mint))}
-.mini p{margin:0;font-size:12.5px;line-height:1.4}
-.confirm{position:absolute;left:-28px;bottom:-26px;display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:var(--shadow-lg);font-size:13.5px}
-.confirm b{display:block;font-size:13.5px}
-.confirm span{color:var(--faint);font-size:12.5px}
-.check{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--pine);color:var(--pine-ink);font-weight:700}
-/* Strip */
-.strip{margin:72px 0 0;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.strip div{font-size:14.5px;color:var(--soft)}
-.strip b{display:block;font:650 22px/1.2 var(--font-display);letter-spacing:-.02em;color:var(--ink);margin-bottom:2px}
-/* Sections */
-.sec{padding:88px 0 0}
-.sec-head{max-width:640px;margin-bottom:32px}
-.sec-head h2{margin:14px 0 10px!important;font-size:clamp(26px,3.4vw,38px)!important;line-height:1.12!important;letter-spacing:-.03em}
-.sec-head p{margin:0;font-size:17.5px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
-.card{display:flex;flex-direction:column;gap:10px;padding:22px;text-decoration:none;color:inherit;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:light-dark(rgba(17,104,74,.35),rgba(95,211,160,.35))!important}
-.card h3{margin:4px 0 0!important;font-size:17.5px!important}
-.card p{margin:0;font-size:15px;line-height:1.55}
-.card .go{margin-top:auto;padding-top:6px;font:600 14px/1 var(--font);color:var(--pine)}
-.card .go::after{content:" →";transition:margin .2s}
-a.card:hover .go::after{margin-left:4px}
-.ico{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:var(--pine-soft);color:var(--pine)}
-.ico svg{width:21px;height:21px}
-/* Feature */
-.feature{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:44px;border-radius:24px;background:linear-gradient(160deg,var(--pine-soft),var(--card) 70%);border:1px solid var(--line);box-shadow:var(--shadow)}
-.feature h2{margin:14px 0 12px!important;font-size:clamp(26px,3.2vw,36px)!important;line-height:1.12!important}
-.feature ul{list-style:none;padding:0;margin:20px 0 28px;display:grid;gap:12px}
-.feature li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
-.feature li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border-radius:6px;background:var(--pine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5 10 3.2 3.2L15 6.5' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
-.steps{display:grid;gap:12px}
-.step{display:flex;gap:16px;align-items:flex-start;padding:18px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
-.step b.n{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--ink);color:var(--bg);font:650 15px/1 var(--font-display)}
-.step p{margin:2px 0 0;font-size:15px}
-.step strong{display:block}
-/* FAQ */
-.faq{max-width:760px}
-.faq details{border-bottom:1px solid var(--line);padding:4px 0}
-.faq summary{cursor:pointer;list-style:none;padding:16px 0;font:600 17px/1.4 var(--font-display);color:var(--ink);display:flex;justify-content:space-between;gap:16px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font:400 22px/1 var(--font);color:var(--faint);transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{margin:0 0 18px}
-.band{margin-top:88px;padding:48px;border-radius:24px;text-align:center;background:light-dark(#0c1712,#0f1a15);color:#eaf1ec;position:relative;overflow:hidden;border:1px solid var(--line)}
-.band::before{content:"";position:absolute;inset:auto -10% -60% -10%;height:120%;background:radial-gradient(closest-side,rgba(47,191,131,.35),transparent);pointer-events:none}
-.band h2{position:relative;color:#fff;margin:0 0 10px!important;font-size:clamp(26px,3.4vw,38px)!important}
-.band p{position:relative;color:#b9c7bf;margin:0 auto 24px;max-width:52ch}
-.band .btn{position:relative;background:#fff!important;color:#0c1712!important;border-color:#fff!important}
-@media (max-width:900px){
-  .hero{grid-template-columns:1fr;gap:48px;padding-top:16px}
-  .feature{grid-template-columns:1fr;padding:28px}
-  .strip{grid-template-columns:1fr 1fr}
-}
-@media (max-width:560px){
-  main{padding:0 16px}
-  .window-body{grid-template-columns:1fr}
-  .ticket{border-right:none;border-bottom:1px solid var(--line)}
-  .side{flex-direction:row;flex-wrap:wrap}.side .mini{flex:1 1 140px}
-  .confirm{left:12px;bottom:-30px}
-  .band{padding:32px 20px}
-  .sec{padding-top:64px}
-}
-</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;650;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&amp;family=Instrument+Sans:wght@400..700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<style>
+html,body{overflow-x:clip}
+main{max-width:1240px;margin:0 auto;padding:0 24px!important}
+.sec{padding-top:120px}
+.num{font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.num b{display:inline-block;background:var(--hi);color:var(--hi-ink);padding:2px 6px;margin-right:8px;font-weight:500}
+
+/* Hero */
+.meta{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line-2);padding:22px 0 14px;gap:16px}
+.meta div{font:500 11.5px/1.5 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+.meta div span{color:var(--ink);display:block}
+.display{font:360 clamp(60px,12.6vw,196px)/.86 var(--font-display)!important;letter-spacing:-.055em!important;margin:36px 0 0!important;font-variation-settings:"opsz" 144,"SOFT" 40!important;text-wrap:initial!important}
+.display em{font-style:italic;font-weight:330;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1!important;position:relative;z-index:0;white-space:nowrap}
+.display em::after{content:"";position:absolute;left:-.04em;right:-.02em;bottom:.08em;height:.32em;background:var(--hi);z-index:-1;transform-origin:left;transform:scaleX(var(--s,1));transition:transform 1.1s cubic-bezier(.7,0,.2,1) .3s}
+.js .display em::after{--s:0}.js .loaded .display em::after{--s:1}
+.display .indent{display:block;padding-left:12vw}
+.hero-foot{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end;margin-top:56px;padding-bottom:12px}
+.lede{font-size:clamp(18px,1.7vw,21px)!important;line-height:1.5!important;color:var(--ink)!important;max-width:44ch;margin:0 0 28px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.clock{border:1px solid var(--line-2);background:var(--card);padding:18px 20px 16px;position:relative}
+.clock .label{display:flex;justify-content:space-between;gap:12px}
+.rec{display:inline-flex;align-items:center;gap:7px;color:var(--ink)}
+.rec::before{content:"";width:8px;height:8px;border-radius:50%;background:#e2483d;animation:blink 1.2s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+.time{font:400 clamp(48px,6.4vw,84px)/1 var(--mono);letter-spacing:-.04em;color:var(--ink);margin:14px 0 10px;font-variant-numeric:tabular-nums}
+.clock p{margin:0 0 14px;font-size:14.5px;line-height:1.45}
+.clock-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logged{font:500 12px/1.4 var(--mono);color:var(--pine);letter-spacing:.03em}
+
+/* Ticker */
+.ticker{margin:96px calc(50% - 50vw) 0;background:var(--pine-deep);color:var(--hi);overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);transform:rotate(-1.2deg)}
+.ticker-track{display:flex;width:max-content;animation:tick 38s linear infinite}
+.ticker span{font:italic 400 clamp(28px,3.6vw,48px)/1 var(--font-display);font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;padding:20px 0;white-space:nowrap}
+.ticker span i{font-style:normal;color:#e9ecdf;padding:0 .6em}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* Split sections */
+.split{display:grid;grid-template-columns:220px 1fr;gap:40px;border-top:1px solid var(--line-2);padding-top:20px}
+.manifesto{font:380 clamp(28px,3.6vw,50px)/1.12 var(--font-display);letter-spacing:-.025em;color:var(--ink);margin:0;font-variation-settings:"opsz" 144,"SOFT" 50;text-wrap:pretty}
+.manifesto mark{background:linear-gradient(var(--hi),var(--hi)) no-repeat 0 85%/var(--m,100%) 40%;color:inherit;padding:0 .05em}
+.js .manifesto mark{--m:0%;transition:background-size .9s cubic-bezier(.7,0,.2,1)}
+.js .in .manifesto mark{--m:100%}
+.js .in .manifesto mark:nth-of-type(2){transition-delay:.35s}
+.manifesto em{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1}
+.sig{margin:28px 0 0;font:500 12px/1.4 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+
+/* Product */
+.product{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.h2x{font:400 clamp(40px,5.4vw,76px)/.95 var(--font-display)!important;letter-spacing:-.045em!important;margin:0 0 24px!important;border:none!important;padding:0!important;font-variation-settings:"opsz" 144,"SOFT" 40}
+.h2x em{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1}
+.ticks{list-style:none;padding:0;margin:28px 0 32px;border-top:1px solid var(--line)}
+.ticks li{display:grid;grid-template-columns:48px 1fr;padding:14px 0;border-bottom:1px solid var(--line);color:var(--ink);font-size:16.5px}
+.ticks li span{font:500 12px/1.9 var(--mono);color:var(--faint)}
+/* Ledger artifact */
+.ledger{position:relative;background:var(--card);border:1px solid var(--line-2);padding:26px 26px 22px;transform:rotate(1.2deg);box-shadow:10px 10px 0 var(--ink)}
+.ledger::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(var(--card) 0 35px,var(--line) 35px 36px);opacity:.6;pointer-events:none}
+.ledger > *{position:relative}
+.ledger-head{display:flex;justify-content:space-between;gap:12px;font:500 11.5px/1.4 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);border-bottom:2px solid var(--ink);padding-bottom:10px}
+.ledger-head b{color:var(--ink);font-weight:500}
+.ledger h3{font:500 30px/1.1 var(--font-display)!important;letter-spacing:-.02em;margin:16px 0 12px!important}
+.lrow{display:grid;grid-template-columns:58px 1fr auto;gap:10px;font:400 14px/36px var(--mono);color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.lrow span:nth-child(2){overflow:hidden;text-overflow:ellipsis}
+.lrow span:first-child,.lrow small{color:var(--faint)}
+.js .lrow{opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.js .in .lrow{opacity:1;transform:none}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid var(--ink);margin-top:6px;padding-top:12px;font:500 12px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+.total b{text-transform:none;font:400 34px/1 var(--mono);letter-spacing:-.03em;color:var(--ink)}
+.meter{height:14px;border:1px solid var(--ink);margin:12px 0 0;background:var(--paper)}
+.meter span{display:block;height:100%;width:var(--w,83%);background:var(--pine);transition:width 1.6s cubic-bezier(.7,0,.2,1) .4s}
+.js .meter span{--w:0%}.js .in .meter span{--w:83%}
+.stamp{position:absolute;right:-14px;top:92px;transform:rotate(9deg);border:2px solid #c4382f;color:#c4382f;font:600 12px/1.25 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;background:light-dark(rgba(246,247,241,.9),rgba(19,32,26,.9));text-align:center}
+.js .stamp{opacity:0;transform:rotate(9deg) scale(1.6);transition:opacity .25s 2s,transform .3s cubic-bezier(.3,1.6,.5,1) 2s}
+.js .in .stamp{opacity:1;transform:rotate(9deg) scale(1)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:96px;border-top:1px solid var(--line-2)}
+.step{padding:22px 24px 6px 0;border-right:1px solid var(--line)}
+.step + .step{padding-left:24px}
+.step:last-child{border-right:none}
+.step .n{font:300 64px/1 var(--font-display);font-variation-settings:"opsz" 144,"SOFT" 100;color:var(--pine);letter-spacing:-.04em}
+.step h3{margin:14px 0 6px!important;font-size:21px!important}
+.step p{margin:0;font-size:15.5px}
+
+/* Index lists */
+.index{border-top:1px solid var(--line-2)}
+.row{display:grid;grid-template-columns:90px minmax(0,1.1fr) minmax(0,1fr) 40px;gap:24px;align-items:center;padding:24px 8px;border-bottom:1px solid var(--line-2);text-decoration:none;color:var(--ink);position:relative;transition:background .2s,padding .25s}
+.row:hover{background:var(--hi);color:var(--hi-ink);padding-left:20px}
+.row .k{font:500 12px/1 var(--mono);letter-spacing:.07em;color:var(--faint)}
+.row .t{font:400 clamp(24px,2.7vw,38px)/1.05 var(--font-display);letter-spacing:-.025em;font-variation-settings:"opsz" 144,"SOFT" 40;transition:font-variation-settings .3s}
+.row:hover .t{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1}
+.row .d{font-size:15.5px;color:var(--soft);line-height:1.45}
+.row:hover .d,.row:hover .k{color:var(--hi-ink)}
+.row .a{font:400 26px/1 var(--font);justify-self:end;transition:transform .25s}
+.row:hover .a{transform:rotate(45deg)}
+.head-row{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.head-row p{max-width:40ch;margin:0}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--line-2)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:24px;padding:22px 0;font:400 clamp(21px,2.2vw,28px)/1.2 var(--font-display);letter-spacing:-.015em;color:var(--ink);font-variation-settings:"opsz" 72,"SOFT" 40}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:300 30px/1 var(--mono);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 24px;max-width:64ch;font-size:17px}
+
+/* Closing */
+.close{margin:140px calc(50% - 50vw) -120px;background:var(--pine-deep);color:#e9ecdf;padding:110px 24px 120px;text-align:center}
+.close .display{color:#e9ecdf;font-size:clamp(52px,9vw,140px)!important;margin:18px 0 36px!important}
+.close .display em{color:var(--hi)}
+.close .display em::after{display:none}
+.close .num{color:#9fb3a7}
+.close .btn{background:var(--hi)!important;color:var(--hi-ink)!important;border-color:var(--hi)!important}
+.close .btn:hover{box-shadow:4px 4px 0 #e9ecdf}
+.close p:not(.display){color:#b5c4ba;margin:20px 0 0;font:500 12px/1.4 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.site-footer{margin-top:0}
+
+@media (max-width:980px){
+  .product{grid-template-columns:1fr;gap:56px}
+  .hero-foot{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr;gap:20px}
+  .row{grid-template-columns:56px 1fr 32px}.row .d{grid-column:2;grid-row:2}
+}
+@media (max-width:640px){
+  main{padding:0 16px!important}
+  .meta{grid-template-columns:1fr 1fr}
+  .display .indent{padding-left:0}
+  .steps{grid-template-columns:1fr}.step,.step + .step{padding:20px 0;border-right:none;border-bottom:1px solid var(--line)}
+  .ledger{transform:none;box-shadow:6px 6px 0 var(--ink);padding:20px 16px}
+  .stamp{right:6px;top:70px}
+  .lrow{grid-template-columns:48px 1fr auto;font-size:13px}
+  .sec{padding-top:88px}
+  .row{gap:14px;padding:20px 4px}.row:hover{padding-left:10px}
+  .close{padding:80px 16px 96px}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <header class="site-header noprint"><div class="wrap-x">
@@ -121,122 +161,118 @@ a.card:hover .go::after{margin-left:4px}
 </div></header>
 <main>
 
-<section class="hero">
+<section class="hero" id="top">
+<div class="meta">
+<div>Northpine Apps<span>Software for HubSpot</span></div>
+<div>Built for<span>Support teams &amp; agencies</span></div>
+<div>Based in<span>New Jersey, USA</span></div>
+<div>Now shipping<span>Tally Time, free in beta</span></div>
+</div>
+<h1 class="display">Every hour,<span class="indent"><em>accounted</em> for.</span></h1>
+<div class="hero-foot">
 <div>
-<p class="eyebrow">Tally Time is free during the beta</p>
-<h1>Know where every <em>support hour</em> goes.</h1>
-<p class="lede">HubSpot tells you when a ticket opened and closed, not how long your team actually worked on it. Tally Time tracks real working time on tickets and shows each client's retainer hours right on the company record.</p>
-<div class="hero-ctas">
-<a class="btn btn-lg" href="/tally-time/setup.html#install">Install free in HubSpot</a>
-<a class="btn btn-lg btn-ghost" href="/tally-time/setup.html">See how it works</a>
+<p class="lede">HubSpot knows when a ticket opened and closed. It doesn't know how long your team actually worked on it. We build the apps and free tools that close that gap, so the hours you work are the hours you bill.</p>
+<div class="ctas"><a class="btn btn-lg" href="/tally-time/setup.html#install">Install Tally Time free</a><a class="btn btn-lg btn-ghost" href="#tools">Browse free tools</a></div>
 </div>
-<p class="hero-note"><span>Two-minute setup</span><span>No credit card</span><span>Free plan for 3 agents</span></p>
+<div class="clock" aria-live="off">
+<div class="label"><span class="rec">Session in progress</span><span>Ticket #0001 · You</span></div>
+<div class="time" id="clock">00:00:00</div>
+<p>That's how long you've been on this page. Tally Time counts time like this on every HubSpot ticket: the work, not the days it sits open.</p>
+<div class="clock-row"><button type="button" class="btn-sm" id="log">Confirm this session</button><span class="logged" id="logged"></span></div>
 </div>
-
-<div class="mock" aria-hidden="true">
-<div class="window">
-<div class="window-bar"><i></i><i></i><i></i><b>Ticket · Acme Co.</b></div>
-<div class="window-body">
-<div class="ticket">
-<small>#4821 · High</small>
-<h3>Contact form stopped sending notifications</h3>
-<span class="pill">In progress</span><span class="pill">Retainer</span>
-<div class="line" style="width:92%;margin-top:18px"></div>
-<div class="line" style="width:78%"></div>
-<div class="line" style="width:85%"></div>
-<div class="line" style="width:52%"></div>
-<div class="line" style="width:70%;margin-top:20px"></div>
-<div class="line" style="width:60%"></div>
-</div>
-<div class="side">
-<div class="mini"><h4>Time on ticket</h4><div class="timer">00:42:18</div><div class="live">Tracking</div></div>
-<div class="mini"><h4>Acme retainer</h4><div class="mbar"><span></span></div><p><b>38 of 50 h</b> used in November</p></div>
-</div>
-</div>
-</div>
-<div class="confirm"><div class="check">✓</div><div><b>Session saved: 42 min</b><span>Confirmed in one click</span></div></div>
 </div>
 </section>
 
-<div class="strip">
-<div><b>Automatic</b>Time tracks while the ticket is worked</div>
-<div><b>One click</b>Reps confirm or adjust each session</div>
-<div><b>80% alerts</b>Before a retainer runs out</div>
-<div><b>Monthly report</b>Hours by client, ready to send</div>
-</div>
+<div class="ticker" aria-hidden="true"><div class="ticker-track">
+<span>time on tickets<i>✳</i>retainer hours<i>✳</i>80% alerts<i>✳</i>monthly client reports<i>✳</i>no more month-end guessing<i>✳</i></span>
+<span>time on tickets<i>✳</i>retainer hours<i>✳</i>80% alerts<i>✳</i>monthly client reports<i>✳</i>no more month-end guessing<i>✳</i></span>
+</div></div>
 
-<section class="sec" id="tools">
-<div class="sec-head">
-<p class="eyebrow">Free tools</p>
-<h2>Tools that work in your browser. No sign-up.</h2>
-<p>Built for support leads and agency owners who run on HubSpot, or just want the numbers without a spreadsheet.</p>
+<section class="sec reveal">
+<div class="split">
+<div class="num"><b>01</b>The gap</div>
+<div>
+<p class="manifesto">A ticket can sit open for three days and take twenty minutes of work. HubSpot sees <mark>the three days.</mark> Your invoice needs <mark>the twenty minutes.</mark> Everything we make is about <em>that difference.</em></p>
+<p class="sig">Northpine Apps · Notes on billable time</p>
 </div>
-<div class="grid">
-<a class="card" href="/tools/retainer-hours-tracker.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span><h3>Retainer hours tracker</h3><p>Log hours per client, get an 80% warning, and print a monthly report.</p><span class="go">Open tracker</span></a>
-<a class="card" href="/tools/hubspot-ticket-time-report.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>HubSpot ticket time report</h3><p>Drop in a ticket export and get hours by company, month and owner.</p><span class="go">Build a report</span></a>
-<a class="card" href="/tools/support-sla-calculator.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4M8 14l2.5 2.5L16 12"/></svg></span><h3>Support SLA calculator</h3><p>Due times in business hours, your hit rate, and how many agents you need.</p><span class="go">Calculate</span></a>
-<a class="card" href="/tools/hubspot-service-hub-cost-calculator.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M8 6h8M8 11h2M14 11h2M8 15h2M14 15h2M8 19h8"/></svg></span><h3>Service Hub cost calculator</h3><p>Compare Starter, Professional and Enterprise for your team size.</p><span class="go">Compare plans</span></a>
-</div>
-</section>
-
-<section class="sec" id="templates">
-<div class="sec-head">
-<p class="eyebrow">Templates</p>
-<h2>Copy, fill in the brackets, send.</h2>
-<p>Plain-English templates for the paperwork every support team and agency needs.</p>
-</div>
-<div class="grid">
-<a class="card" href="/templates/support-sla-template.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Customer support SLA</h3><p>Priorities, response targets, pause rules and escalation.</p><span class="go">Use template</span></a>
-<a class="card" href="/templates/retainer-agreement-hours-clause.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span><h3>Retainer agreement clause</h3><p>Hours, rollover and overage terms that prevent disputes.</p><span class="go">Use template</span></a>
-<a class="card" href="/templates/client-hours-report-email.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 6 10-6"/></svg></span><h3>Client hours report emails</h3><p>The 80% heads-up and the monthly hours summary.</p><span class="go">Use template</span></a>
-</div>
-</section>
-
-<section class="sec" id="guides">
-<div class="sec-head">
-<p class="eyebrow">Guides</p>
-<h2>Practical answers, step by step.</h2>
-</div>
-<div class="grid">
-<a class="card" href="/guides/track-retainer-hours.html"><h3>How to track retainer hours</h3><p>What to log, when to warn the client, and how to handle rollover and overage.</p><span class="go">Read guide</span></a>
-<a class="card" href="/guides/track-time-on-hubspot-tickets.html"><h3>How to track time on HubSpot tickets</h3><p>Three ways to do it, with click-by-click steps and the trade-offs of each.</p><span class="go">Read guide</span></a>
 </div>
 </section>
 
 <section class="sec" id="tally-time">
-<div class="feature">
+<div class="split" style="margin-bottom:48px"><div class="num"><b>02</b>The app</div><div class="label">Tally Time for HubSpot · Free during the beta</div></div>
+<div class="product">
 <div>
-<p class="eyebrow">Tally Time</p>
-<h2>Time tracking that lives inside HubSpot.</h2>
-<p>No separate timer app and no month-end matching. The hours sit on the ticket and the company, where your reports already are.</p>
-<ul>
-<li>Tracks working time on each ticket automatically</li>
-<li>Retainer hours on every company record: "38 of 50 used"</li>
-<li>Warns at 80% and builds the monthly client report</li>
-<li>Writes totals to ticket properties for HubSpot reports</li>
+<h2 class="h2x">A timesheet that <em>fills itself in.</em></h2>
+<p class="lede" style="color:var(--soft)!important">Tally Time sits on the HubSpot ticket record. It tracks working time while your team works, asks them to confirm each session in one click, and keeps a running retainer total on every company.</p>
+<ul class="ticks">
+<li><span>A.</span>Real working time on every ticket</li>
+<li><span>B.</span>"41.5 of 50 hours used" on each company</li>
+<li><span>C.</span>An alert to you at 80%, before the hours run out</li>
+<li><span>D.</span>A monthly client report, ready to send</li>
 </ul>
-<div class="hero-ctas"><a class="btn btn-lg" href="/tally-time/setup.html#install">Install free</a><a class="btn btn-lg btn-ghost" href="/tally-time/pricing.html">See pricing</a></div>
+<div class="ctas"><a class="btn btn-lg" href="/tally-time/setup.html#install">Install free</a><a class="btn btn-lg btn-ghost" href="/tally-time/pricing.html">Pricing</a></div>
+</div>
+<div class="reveal">
+<div class="ledger" aria-label="Example retainer ledger for a client">
+<div class="ledger-head"><span>Retainer ledger</span><b>Nov 2026</b></div>
+<h3>Acme Co.</h3>
+<div class="lrow" style="transition-delay:.1s"><span>11/03</span><span>#4821 Contact form fix</span><span>0:42</span></div>
+<div class="lrow" style="transition-delay:.2s"><span>11/05</span><span>#4836 Pricing page update</span><span>1:30</span></div>
+<div class="lrow" style="transition-delay:.3s"><span>11/09</span><span>#4850 Monthly analytics report</span><span>3:00</span></div>
+<div class="lrow" style="transition-delay:.4s"><span>11/12</span><span>#4877 Checkout bug, mobile</span><span>2:18</span></div>
+<div class="lrow" style="transition-delay:.5s"><span>11/18</span><span>#4902 Support queue, 9 tickets</span><span>10:00</span></div>
+<div class="lrow" style="transition-delay:.6s"><span>11/24</span><span><small>+ 14 more sessions</small></span><span>24:00</span></div>
+<div class="total"><span>Used of 50 h</span><b>41.5 h</b></div>
+<div class="meter"><span></span></div>
+<div class="stamp">80% alert<br>sent to client</div>
+</div>
+</div>
 </div>
 <div class="steps">
-<div class="step"><b class="n">1</b><div><strong>Install from HubSpot</strong><p>Approve access in one screen. It takes about two minutes.</p></div></div>
-<div class="step"><b class="n">2</b><div><strong>Work tickets as usual</strong><p>A card on the ticket tracks the session while you work.</p></div></div>
-<div class="step"><b class="n">3</b><div><strong>Confirm in one click</strong><p>Keep the time or adjust it. Totals roll up to the company.</p></div></div>
+<div class="step"><div class="n">01</div><h3>Install from HubSpot</h3><p>Approve access on one screen. Setup takes about two minutes.</p></div>
+<div class="step"><div class="n">02</div><h3>Work tickets as usual</h3><p>A card on the ticket tracks the session while you work. No timers to remember.</p></div>
+<div class="step"><div class="n">03</div><h3>Confirm in one click</h3><p>Keep the time or adjust it. Totals roll up to the company and its retainer.</p></div>
 </div>
-</div>
+</section>
+
+<section class="sec" id="tools">
+<div class="split" style="margin-bottom:28px"><div class="num"><b>03</b>Free tools</div>
+<div class="head-row"><h2 class="h2x" style="margin:0!important">Free tools, <em>no sign-up.</em></h2><p>They run in your browser and your data never leaves it.</p></div></div>
+<nav class="index" aria-label="Free tools">
+<a class="row" href="/tools/retainer-hours-tracker.html"><span class="k">T—01</span><span class="t">Retainer hours tracker</span><span class="d">Log hours per client, get warned at 80%, print a monthly report.</span><span class="a">↗</span></a>
+<a class="row" href="/tools/hubspot-ticket-time-report.html"><span class="k">T—02</span><span class="t">Ticket time report</span><span class="d">Drop in a HubSpot export. Get hours by company, month and owner.</span><span class="a">↗</span></a>
+<a class="row" href="/tools/support-sla-calculator.html"><span class="k">T—03</span><span class="t">Support SLA calculator</span><span class="d">Due times in business hours, your hit rate, agents needed.</span><span class="a">↗</span></a>
+<a class="row" href="/tools/hubspot-service-hub-cost-calculator.html"><span class="k">T—04</span><span class="t">Service Hub cost calculator</span><span class="d">Starter, Professional or Enterprise: what your team would pay.</span><span class="a">↗</span></a>
+</nav>
+</section>
+
+<section class="sec" id="guides">
+<div class="split" style="margin-bottom:28px"><div class="num"><b>04</b>Templates &amp; guides</div>
+<div class="head-row"><h2 class="h2x" style="margin:0!important">Copy it. <em>Send it.</em></h2><p>Plain-English paperwork and how-tos for running support and retainers.</p></div></div>
+<nav class="index" aria-label="Templates and guides">
+<a class="row" href="/templates/support-sla-template.html"><span class="k">P—01</span><span class="t">Customer support SLA</span><span class="d">Priorities, response targets, pause rules and escalation.</span><span class="a">↗</span></a>
+<a class="row" href="/templates/retainer-agreement-hours-clause.html"><span class="k">P—02</span><span class="t">Retainer agreement clause</span><span class="d">Hours, rollover and overage terms that prevent disputes.</span><span class="a">↗</span></a>
+<a class="row" href="/templates/client-hours-report-email.html"><span class="k">P—03</span><span class="t">Client hours emails</span><span class="d">The 80% heads-up and the monthly hours summary.</span><span class="a">↗</span></a>
+<a class="row" href="/guides/track-retainer-hours.html"><span class="k">G—01</span><span class="t">How to track retainer hours</span><span class="d">What to log, when to warn the client, rollover and overage.</span><span class="a">↗</span></a>
+<a class="row" href="/guides/track-time-on-hubspot-tickets.html"><span class="k">G—02</span><span class="t">Time on HubSpot tickets</span><span class="d">Three ways to do it, step by step, with the trade-offs.</span><span class="a">↗</span></a>
+</nav>
 </section>
 
 <section class="sec faq" id="faq">
-<div class="sec-head"><p class="eyebrow">Questions</p><h2>Good to know</h2></div>
+<div class="split"><div class="num"><b>05</b>Questions</div>
+<div>
 <details><summary>Doesn't HubSpot already track time to close?</summary><p>Time to close measures how long a ticket stayed open, including nights, weekends and time waiting on the customer. It doesn't tell you how much work the ticket took. Tally Time measures the work.</p></details>
-<details><summary>Which HubSpot plans does Tally Time work with?</summary><p>Any HubSpot account that uses tickets. See the <a href="/tally-time/setup.html">setup guide</a> for details.</p></details>
+<details><summary>Which HubSpot plans does Tally Time work with?</summary><p>Any HubSpot account that uses tickets. The <a href="/tally-time/setup.html">setup guide</a> has the details.</p></details>
 <details><summary>What does it cost?</summary><p>It's free during the beta, with a free plan for up to 3 agents after that. Paid plans are on the <a href="/tally-time/pricing.html">pricing page</a>.</p></details>
 <details><summary>Are the free tools really free?</summary><p>Yes. They run in your browser, need no account, and your data stays on your device.</p></details>
+</div></div>
 </section>
 
-<section class="band">
-<h2>Stop giving away billable hours.</h2>
-<p>Install Tally Time free during the beta and see your first real ticket times today.</p>
+<section class="close">
+<div class="num">06 · The last word</div>
+<p class="display">Stop giving away <em>the hours.</em></p>
 <a class="btn btn-lg" href="/tally-time/setup.html#install">Install Tally Time free</a>
+<p>Two-minute setup · No credit card · Free for up to 3 agents</p>
 </section>
 
 </main>
@@ -257,6 +293,23 @@ a.card:hover .go::after{margin-left:4px}
 <li><a href="mailto:vicedexinfo@gmail.com">Contact</a></li>
 <li><a href="/privacy.html">Privacy</a></li>
 <li><a href="/terms.html">Terms</a></li></ul></div>
-</div><div class="footer-base"><span>© 2026 Northpine Apps · New Jersey, USA</span><span>Not affiliated with or endorsed by HubSpot.</span></div></footer>
+</div><span class="footer-word" aria-hidden="true">Northpine</span><div class="footer-base"><span>© 2026 Northpine Apps · New Jersey, USA</span><span>Not affiliated with or endorsed by HubSpot.</span></div></footer>
+<script>
+(function(){
+  var start=Date.now(),el=document.getElementById('clock');
+  function pad(n){return String(n).padStart(2,'0')}
+  function fmt(s){return pad(Math.floor(s/3600))+':'+pad(Math.floor(s/60)%60)+':'+pad(s%60)}
+  setInterval(function(){el.textContent=fmt(Math.floor((Date.now()-start)/1000))},1000);
+  document.getElementById('log').addEventListener('click',function(){
+    var s=Math.max(1,Math.floor((Date.now()-start)/1000)),m=Math.max(1,Math.round(s/60));
+    document.getElementById('logged').textContent='✓ Logged '+m+' min to ticket #0001';
+  });
+  requestAnimationFrame(function(){setTimeout(function(){document.querySelector('.hero').classList.add('loaded')},120)});
+  var targets=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){targets.forEach(function(t){t.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.25});
+  targets.forEach(function(t){io.observe(t)});
+})();
+</script>
 </body>
 </html>
