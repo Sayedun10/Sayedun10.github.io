@@ -141,8 +141,8 @@ html,body{overflow-x:clip}
 .masthead h1 em{font-weight:340}
 .masthead > p{font-size:clamp(18px,1.7vw,21px)!important;line-height:1.5;color:var(--ink)!important;max-width:58ch;margin:0}
 main{counter-reset:sec}
-main > h2,main > .noprint > h2,main > section:not(.panel) > h2{counter-increment:sec}
-main > h2::before,main > .noprint > h2::before,main > section:not(.panel) > h2::before{content:counter(sec,decimal-leading-zero);display:inline-block;vertical-align:.45em;margin-right:14px;padding:3px 6px;background:var(--hi);color:var(--hi-ink);font:500 11.5px/1 var(--mono);letter-spacing:.06em}
+main > h2,main > .noprint:not(.panel) > h2,main > section:not(.panel) > h2{counter-increment:sec}
+main > h2::before,main > .noprint:not(.panel) > h2::before,main > section:not(.panel) > h2::before{content:counter(sec,decimal-leading-zero);display:inline-block;vertical-align:.45em;margin-right:14px;padding:3px 6px;background:var(--hi);color:var(--hi-ink);font:500 11.5px/1 var(--mono);letter-spacing:.06em}
 /* tool surface */
 body:has(.panel.tool) main{max-width:1000px!important}
 .panel.tool{box-shadow:8px 8px 0 var(--ink)!important;margin-bottom:36px!important}
