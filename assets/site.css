@@ -73,7 +73,7 @@ main h1 em,main h2 em{font-style:italic;font-variation-settings:"opsz" 144,"SOFT
 main h2{font-weight:470;font-size:clamp(26px,3.2vw,36px)!important;line-height:1.08;letter-spacing:-.025em;margin:56px 0 12px;padding-top:18px;border-top:1px solid var(--line-2)}
 .panel h2,.tpl h2,.tier h2,.plan h2,.card h2{border-top:none;padding-top:0;margin-top:4px}
 main h3{font-weight:560;font-size:20px;letter-spacing:-.01em;margin:30px 0 6px;font-variation-settings:"opsz" 24}
-main > p:first-of-type,main h1 + p{font-size:clamp(18px,1.7vw,20px);line-height:1.55;max-width:60ch}
+main h1 + p{font-size:clamp(18px,1.7vw,20px);line-height:1.55;max-width:60ch}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;margin:8px 0 0;padding:0;background:none;color:var(--ink)!important;font:500 12px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase}
 .eyebrow::before{content:"";width:22px;height:10px;background:var(--hi);border:1px solid var(--ink)}
 
@@ -129,3 +129,64 @@ main > footer{display:none!important}
 /* Print */
 @media print{.site-header,.site-footer,.footer-base{display:none!important}body{background:#fff!important}body::after{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* ===== Inner pages: masthead, numbered sections, tool UI ===== */
+html,body{overflow-x:clip}
+.masthead{margin:0 0 44px;padding:0}
+.masthead .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-bottom:1px solid var(--line-2);padding:0 0 14px}
+.masthead .meta div{font:500 11.5px/1.5 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+.masthead .meta span{display:block;color:var(--ink)}
+.masthead .meta div:first-child span{display:table;background:var(--hi);color:var(--hi-ink);padding:0 6px;margin-top:2px}
+.masthead h1{font-weight:360!important;font-size:clamp(44px,7.4vw,104px)!important;line-height:.94!important;letter-spacing:-.05em!important;margin:34px 0 26px!important;max-width:15ch;text-wrap:balance}
+.masthead h1 em{font-weight:340}
+.masthead > p{font-size:clamp(18px,1.7vw,21px)!important;line-height:1.5;color:var(--ink)!important;max-width:58ch;margin:0}
+main{counter-reset:sec}
+main > h2,main > .noprint:not(.panel) > h2,main > section:not(.panel) > h2{counter-increment:sec}
+main > h2::before,main > .noprint:not(.panel) > h2::before,main > section:not(.panel) > h2::before{content:counter(sec,decimal-leading-zero);display:inline-block;vertical-align:.45em;margin-right:14px;padding:3px 6px;background:var(--hi);color:var(--hi-ink);font:500 11.5px/1 var(--mono);letter-spacing:.06em}
+/* tool surface */
+body:has(.panel.tool) main{max-width:1000px!important}
+.panel.tool{box-shadow:8px 8px 0 var(--ink)!important;margin-bottom:36px!important}
+label{display:block;font:500 11.5px/1.4 var(--mono)!important;letter-spacing:.07em;text-transform:uppercase;color:var(--faint)!important;margin-bottom:6px}
+.days label{font:500 15px/1.4 var(--font)!important;text-transform:none;letter-spacing:0;color:var(--ink)!important}
+summary{cursor:pointer;color:var(--ink);font:500 12.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.big{font:400 clamp(28px,3vw,36px)/1.1 var(--mono)!important;}
+.out{font:400 clamp(21px,2.3vw,28px)/1.25 var(--mono)!important;}
+.big,.out{letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums}
+.tier{padding:20px!important;position:relative}
+.tier h3{font:500 24px/1.1 var(--font-display)!important;margin:0 0 10px!important;padding-bottom:10px;border-bottom:1px solid var(--line-2)}
+.tier.pick{border:1px solid var(--ink)!important;box-shadow:6px 6px 0 var(--hi)!important}
+.client h3{font:500 24px/1.15 var(--font-display)!important;letter-spacing:-.02em}
+.status{font-family:var(--mono)!important;font-size:14px;font-weight:500!important}
+.tabs{display:inline-flex!important;gap:0!important;border:1px solid var(--ink);border-radius:var(--r-sm);padding:3px}
+.tabs button{border:none!important;border-radius:2px!important;box-shadow:none!important;transform:none!important}
+.tabs button[aria-pressed=false]{background:transparent!important}
+.drop{padding:40px 24px!important;text-align:center}
+.drop.on{background:var(--hi)!important;color:var(--hi-ink)}
+/* Tally Time callout as a pine block */
+.panel.cta{background:var(--pine-deep)!important;border:1px solid var(--pine-deep)!important;border-left:1px solid var(--pine-deep)!important;color:#e9ecdf;padding:30px!important;margin:56px 0!important}
+.panel.cta h2,.panel.cta h3{color:#e9ecdf!important}
+.panel.cta p,.panel.cta li{color:#b5c4ba!important}
+.panel.cta strong,.panel.cta b{color:#fff}
+.panel.cta a{color:var(--hi);text-decoration-color:var(--hi)}
+.panel.cta a:hover{background:var(--hi);color:var(--hi-ink)}
+.panel.cta .btn{background:var(--hi)!important;color:var(--hi-ink)!important;border-color:var(--hi)!important}
+
+/* Index lists (home, tools, guides, templates) */
+.index{border-top:1px solid var(--line-2);margin:0 0 24px}
+.row{display:grid;grid-template-columns:90px minmax(0,1.1fr) minmax(0,1fr) 40px;gap:24px;align-items:center;padding:26px 8px;border-bottom:1px solid var(--line-2);text-decoration:none;color:var(--ink);transition:background .2s,padding .25s}
+.row:hover{background:var(--hi);color:var(--hi-ink);padding-left:20px}
+.row .k{font:500 12px/1 var(--mono);letter-spacing:.07em;color:var(--faint)}
+.row .t{font:400 clamp(24px,2.7vw,38px)/1.05 var(--font-display);letter-spacing:-.025em;font-variation-settings:"opsz" 144,"SOFT" 40}
+.row:hover .t{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1}
+.row .d{font-size:15.5px;color:var(--soft);line-height:1.45}
+.row:hover .d,.row:hover .k{color:var(--hi-ink)}
+.row .a{font:400 26px/1 var(--font);justify-self:end;transition:transform .25s}
+.row:hover .a{transform:rotate(45deg)}
+.wide{max-width:1240px!important}
+
+@media (max-width:980px){.row{grid-template-columns:56px 1fr 32px}.row .d{grid-column:2;grid-row:2}}
+@media (max-width:640px){
+  .masthead .meta{grid-template-columns:1fr 1fr}
+  .row{gap:14px;padding:20px 4px}.row:hover{padding-left:10px}
+  .panel.tool{box-shadow:5px 5px 0 var(--ink)!important}
+}

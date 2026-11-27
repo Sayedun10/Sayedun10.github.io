@@ -26,14 +26,15 @@ footer{margin-top:64px;font-size:14px;color:var(--soft)}
 <body>
 <header class="site-header noprint"><div class="wrap-x">
 <a class="brand" href="/"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 6 17h5l-6 9h22l-6-9h5z" fill="currentColor"/><rect x="14" y="26" width="4" height="4" fill="currentColor"/></svg></span>Northpine</a>
-<nav class="nav" aria-label="Main"><a href="/#tools">Tools</a><a href="/templates/">Templates</a><a href="/#guides">Guides</a><a href="/tally-time/pricing.html">Tally Time</a></nav>
-<details class="menu"><summary aria-label="Menu">Menu</summary><div class="menu-panel"><a href="/#tools">Tools</a><a href="/templates/">Templates</a><a href="/#guides">Guides</a><a href="/tally-time/pricing.html">Tally Time</a></div></details>
+<nav class="nav" aria-label="Main"><a href="/tools/">Tools</a><a href="/templates/">Templates</a><a href="/guides/">Guides</a><a href="/tally-time/pricing.html">Tally Time</a></nav>
+<details class="menu"><summary aria-label="Menu">Menu</summary><div class="menu-panel"><a href="/tools/">Tools</a><a href="/templates/">Templates</a><a href="/guides/">Guides</a><a href="/tally-time/pricing.html">Tally Time</a></div></details>
 <a class="btn btn-sm header-cta" href="/tally-time/setup.html#install">Install Tally Time</a>
 </div></header>
 <main>
-<p class="eyebrow">Tally Time for HubSpot</p>
+<section class="masthead"><div class="meta"><div>Tally Time<span>Setup</span></div><div>Works with<span>HubSpot tickets</span></div><div>Price<span>Free during beta</span></div><div>Setup<span>About 2 minutes</span></div></div>
 <h1>Tally Time setup guide</h1>
 <p>Tally Time tracks support time on HubSpot tickets automatically and shows retainer hours on companies. Setup takes about five minutes.</p>
+</section>
 <h2 id="install">1. Install the app</h2>
 <p><a href="https://app.hubspot.com/oauth/authorize?client_id=70998023-79bb-48ec-b4a8-c5df6e30d21d&amp;redirect_uri=https%3A%2F%2Ftally-time-api.vicedexinfo.workers.dev%2Foauth%2Fcallback&amp;scope=crm.objects.tickets.read+crm.schemas.tickets.write+crm.objects.tickets.write+oauth+crm.objects.companies.read&amp;state=site" style="display:inline-block;padding:10px 18px;border-radius:8px;background:var(--pine);color:var(--bg);text-decoration:none;font-weight:600">Install Tally Time free (beta)</a></p>
 <p>Click the button above and pick your HubSpot account. HubSpot may say the app is unverified, which is normal for apps that are not on the Marketplace yet. Approve the permissions. The app needs to read tickets and companies, write one ticket property, and create that property.</p>
