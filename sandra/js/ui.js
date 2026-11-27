@@ -86,14 +86,15 @@ export function confetti() {
   c.width = innerWidth * dpr; c.height = innerHeight * dpr; x.scale(dpr, dpr);
   const cs = getComputedStyle(document.documentElement);
   const cols = ["--coral", "--teal", "--butter", "--plum"].map((v) => cs.getPropertyValue(v).trim());
-  const ps = Array.from({ length: 140 }, () => ({ x: innerWidth / 2 + (Math.random() - .5) * 200, y: innerHeight * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 4, r: Math.random() * 6 + 4, a: Math.random() * 6, va: (Math.random() - .5) * .3, c: cols[Math.floor(Math.random() * cols.length)], s: Math.random() < .3 ? "plus" : "rect" }));
+  const ps = Array.from({ length: 140 }, () => ({ x: innerWidth / 2 + (Math.random() - .5) * 200, y: innerHeight * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 4, r: Math.random() * 6 + 4, a: Math.random() * 6, va: (Math.random() - .5) * .3, c: cols[Math.floor(Math.random() * cols.length)], s: Math.random() < .45 ? "heart" : Math.random() < .5 ? "plus" : "rect" }));
   let f = 0;
   (function step() {
     x.clearRect(0, 0, innerWidth, innerHeight);
     for (const p of ps) {
       p.vy += .35; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.a += p.va;
       x.save(); x.translate(p.x, p.y); x.rotate(p.a); x.fillStyle = p.c;
-      if (p.s === "plus") { x.fillRect(-p.r / 2, -p.r / 6, p.r, p.r / 3); x.fillRect(-p.r / 6, -p.r / 2, p.r / 3, p.r); } else x.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2);
+      if (p.s === "heart") { const r = p.r * 1.3; x.beginPath(); x.moveTo(0, r * .35); x.bezierCurveTo(-r, -r * .3, -r * .45, -r, 0, -r * .45); x.bezierCurveTo(r * .45, -r, r, -r * .3, 0, r * .35); x.fill(); }
+      else if (p.s === "plus") { x.fillRect(-p.r / 2, -p.r / 6, p.r, p.r / 3); x.fillRect(-p.r / 6, -p.r / 2, p.r / 3, p.r); } else x.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2);
       x.restore();
     }
     if (++f < 150) requestAnimationFrame(step); else x.clearRect(0, 0, innerWidth, innerHeight);

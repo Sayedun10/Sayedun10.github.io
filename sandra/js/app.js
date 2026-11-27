@@ -62,7 +62,7 @@ async function home(el) {
   <section class="hero wrap">
     <div class="hero-copy">
       <p class="eyebrow"><span class="dot"></span>${esc(dateStr)}${s ? ` · ${s}-day streak` : ""}</p>
-      <h1 class="display">${greeting()},<br><span class="nurse">Nurse ${esc(CONFIG.lastName)}</span><span class="almost">(almost)</span></h1>
+      <h1 class="display">${greeting()},<br><span class="nurse">Nurse ${esc(CONFIG.lastName)}</span><span class="almost">(almost)</span><span class="sparkle" aria-hidden="true">✦</span><span class="sparkle s2" aria-hidden="true">✦</span></h1>
       <p class="lede">${esc(pick(AFFIRMATIONS))}</p>
       <div class="cta">
         <a class="btn primary" href="#/cards/due">Start today's rounds <span class="pill">${due} due</span></a>
